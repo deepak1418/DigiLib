@@ -1,0 +1,28 @@
+<div class="col-lg-4">
+  <img class="img-circle" src="http://pdfgratuit.com/wp-content/uploads/2017/12/pdf-1-300x300.png"
+       alt="Generic placeholder image" width="140" height="140">
+  <h2>PDFs</h2>
+  <p>"All the related PDFs of all the subjects are there in this block."</p>
+  <p>
+<!--    <a class="btn btn-danger" href="pdf.html" role="button">PDFs &raquo;</a>-->
+    <%=button_to 'PDFs',all_pdf_path,method: :get ,class: "btn btn-danger" %>
+  </p> <!-- &raquo for ">>"-->
+</div>
+<div class="col-lg-4">
+  <img class="img-circle" src="http://aux.iconspalace.com/uploads/1765750655965179549.png"
+       alt="Generic placeholder image" width="140" height="140">
+  <h2>VIDEOS</h2>
+  <p>"All the related Videoss of all the subjects are there in this block".</p>
+<!--  <p><a class="btn btn-info" href="videos.html" role="button">VIDEOS &raquo;</a></p>-->
+  <%=button_to 'VIDEOS',video_path,method: :get ,class: "btn btn-info" %>
+
+</div>
+<div class="col-lg-4">
+  <img class="img-circle" src="http://www.daruna.ac.th/images/images/icons/word.png"
+       alt="Generic placeholder image" width="140" height="140">
+  <h2>DOCUMENTS</h2>
+  <p>All the related Notes of all the subjects are there in this block.</p>
+<!--  <p><a class="btn btn-primary" href="document.html" role="button">Documents &raquo;</a></p>-->
+  <%=button_to 'Documents',doc_path,method: :get ,class: "btn btn-primary" %>
+
+</div>

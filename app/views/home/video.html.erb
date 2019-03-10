@@ -1,0 +1,5 @@
+<%@subjects.select("DISTINCT(subject)").each do |s| %>
+  <%p=Topic.find_by(:sub=>s.subject) %>
+  <%=image_tag p.cover %><br>
+  <%=link_to s.subject ,topic_wise_video_list_path(s.subject),method: :get %><br>
+<% end %>

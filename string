@@ -1,0 +1,7 @@
+[WARNING] The model name 'class_subjects' was recognized as a plural, using the singular 'class_subject' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+      remove    db/migrate/20190309215016_create_class_subjects.rb
+      remove    app/models/class_subject.rb
+      invoke    test_unit
+      remove      test/models/class_subject_test.rb
+      remove      test/fixtures/class_subjects.yml

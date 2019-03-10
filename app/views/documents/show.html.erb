@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<!--<p>-->
+<!--  <strong>User:</strong>-->
+  <%#= @document.user %>
+<!--</p>-->
+
+<p>
+  <strong>Document:</strong><br><br>
+<%if @document.document_attached_content_type=='application/pdf' %>
+
+    <iframe src=<%= @document.document_attached.url%>   , style="width:100%" height="700px;" ></iframe>
+  <% end %>
+
+  <%if @document.document_attached_content_type=="video/mp4" %>
+
+    </p>
+    <a href='<%=  @document.document_attached.url %>'><%= image_tag @document.document_attached.url(:thumb) %></a><br>
+  <% end %>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>
