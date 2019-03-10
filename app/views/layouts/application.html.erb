@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DigiLib</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    <meta charset="utf-5">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>DigiLib</title>
+    <link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/3.3/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <script src="https://getbootstrap.com/docs/3.3/assets/js/ie-emulation-modes-warning.js"></script>
+    <link href="https://getbootstrap.com/docs/3.3/examples/carousel/carousel.css" rel="stylesheet">
+  </head>
+
+  <body>
+  <!-- "navigation"-->
+
+  <div class="navbar-wrapper">
+    <div class="container">
+      <!-- "DigiLIb header"-->
+      <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">DigiLib</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+              <%subject=Topic.all %>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBJECTS <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                  <%subject.each do |s| %>
+                    <li> <%=link_to s.sub ,all_list_path(s.sub),method: :get %></li>
+
+                <% end %>
+
+                </ul>
+              </li>
+              <li>
+                <%if user_signed_in? %>
+                <%= link_to "Logout",destroy_user_session_path, method: :delete  %>
+
+              <% end %>
+              </li>
+              <li>
+                <%if user_signed_in? %>
+
+              <%= link_to "Your Post",documents_path  %>
+                  <%end %>
+
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <!-- "data-interval="1000" if we want time duration for slide and the time in microseconds"-->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- "Indicators" -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img class="first-slide" src="http://waarmedia.com/english/file/2015/06/379.jpg" alt="First slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>DigiLib</h1>
+            <p>The DigiLib (DIGITAL LIBRARY) is an online academic resources management software for monitoring and
+              controlling the transactions related to documents within the institute</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img class="second-slide"
+             src="http://www.twitrcovers.com/wp-content/uploads/2015/12/House-On-The-Rock-Library-l.jpg"
+             alt="Second slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Main Feature</h1>
+            <p> In DigiLib mainly focuses on basic operations like adding new member, new books and updating new
+              information, searching books and members and facility to add and download documents..</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img class="third-slide"
+             src="https://wpblink.com/sites/default/files/wallpaper/man-made/70508/library-wallpapers-hd-70508-7297310.png"
+             alt="Third slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>One more for good measure.</h1>
+            <p>“DigiLib” is a web application designed to help users maintain and organise the website. Our software is
+              easy to use for both beginners and advanced users.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--"for the left swipe of slides" -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <!--"for the right swipe of slides" -->
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="container marketing">
+
+    <div class="row">
+      <%= yield %>
+
+    </div>
+
+    <hr class="featurette-divider">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">DigiLib,<span class="text-muted"> It'll blow your mind.</span></h2>
+        <p class="lead">Our software has four main modules. <br>1. Insertion to Database Module – User friendly input
+          screen <br>2. Extracting from Database module – Attractive Output Screen <br>3 Report Generation module –
+          downloaded book list Available book list<br> 4 Search Facility system – search for books and members</p>
+        <hr class="featurette-divider">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; Natitional Institute Of Teachnology 2019 &middot; <a href="#">Privacy</a> &middot; <a
+          href="#">Terms</a></p>
+        </footer>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="https://getbootstrap.com/docs/3.3/dist/js/bootstrap.min.js"></script>
+      <script src="https://getbootstrap.com/docs/3.3/assets/js/vendor/holder.min.js"></script>
+      <script src="https://getbootstrap.com/docs/3.3/assets/js/ie10-viewport-bug-workaround.js"></script>
+    </div>
+  </div>
+  </body>
+</html>

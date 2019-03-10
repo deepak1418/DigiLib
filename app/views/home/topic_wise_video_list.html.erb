@@ -1,0 +1,5 @@
+<%@sub.each do |s| %>
+  <%if s.document_attached_content_type=='video/mp4' %>
+    <a href='<%= s.document_attached.url %>'><%= image_tag s.document_attached.url(:thumb) %></a><br>
+  <%end %>
+<% end %>
